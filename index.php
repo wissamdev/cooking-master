@@ -33,7 +33,9 @@
                                 echo "active";
                             }
                             ?>">
-                                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" 
+                                     preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                                    <rect width="100%" height="100%" fill="#777"/></svg>
                                 <img src="photos/recettes/<?= $aleatoire->img; ?>" alt="marmelade"/>
                                 <div class="container">
                                     <div class="carousel-caption">
@@ -74,17 +76,20 @@
 
                 <div class="row featurette">
                     <div class="col-md-7 order-md-1">
-                        <h2 class="featurette-heading">Bonjour</h2>
-                        <p class="lead">L'Entreprise Cooking depuis 8 ans maintenant bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla  </p>
+                        <h2 class="featurette-heading">Bonjour</h2><br>
+                        <p class="lead">Vous avez un déjeuner ou un diner à préparer pour vos invités mais manquez d’inspiration ?
+                            Un petit voyage sur cette sélection de recette de cuisine devrait résoudre votre problème.</p>
+                        <p class="lead">L'Entreprise Cooking depuis 8 ans maintenant</p>
                     </div>
                     <div class="col-md-5 order-md-2">
-                        <img class="imgAcceuil" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="photos/slides/creme-petits-poids.jpg" alt="slide"/>
+                        <img class="imgAcceuil" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
+                             src="photos/slides/creme-petits-poids.jpg" alt="slide"/>
                     </div>
                 </div>
         </div>
 
 
-            <!-- /END THE FEATURETTES -->
+        <!-- /END THE FEATURETTES -->
 
     </div><!-- /.container -->
     <?php include("inc/footer.inc.php") ?>
