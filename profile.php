@@ -78,18 +78,65 @@
                 <p><strong>Supprimer</strong> mon compte </p>
                 <input class="btn btn-danger" name="delete" type="submit" value="Supprimer">
             </form>
+            <hr class="featurette-divider">
 
-        </div>
 
-        <div class = "col-4 trois">
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2 premier"></div>
-        <div class="col-4 premier">
 
             <?php if ($_SESSION["statut"] == 'admin') { ?>
+
+                <h4 class="featurette-heading2">ADMINISTRATEUR</h4><br><br>    
+                <form action = "profile.php" method = "post">
+                    <p>
+                    <label for = "ban"><strong>Trouver</strong> une recette :</label>
+                    <input type = "text" name = "viewrecette" id = "viewrecette" placeholder = "recette"/>
+                    </p>
+                    <br>
+                    <p>
+                        <input class = "btn btn-primary" type = "submit" value = "Trouvez">
+                    </p>
+                </form><br><hr><br>
+
+                <?php
+                $viewrecette = filter_input(INPUT_POST, 'viewrecette', FILTER_SANITIZE_STRING);
+
+                $resultat4 = $pdo->query("SELECT * FROM recettes WHERE titre LIKE '%$viewrecette%'");
+
+                if (!empty($viewrecette)) {
+                    ?>
+
+                    <table class="table table-striped" border="solid 1px black" >
+                        <tr class="lead">
+                        <th>IdRecette</th>
+                        <th>titre</th>
+                        </tr>
+                        <?php
+                        while ($viewrecette = $resultat4->fetch(PDO::FETCH_OBJ)) {
+                            ?>
+
+                            <tr class="lead">
+                            <td><?php echo $viewrecette->idRecette; ?></td>
+                            <td><?php echo $viewrecette->titre; ?></td>
+                            </tr>
+
+                        <?php }
+                        ?>
+                    </table>
+                    <?php
+                } else {
+                    var_dump($viewrecette);
+                }
+                ?>
+
+
+            </div>
+
+            <div class = "col-4 trois">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 premier"></div>
+            <div class="col-4 premier">
 
                 <hr class="featurette-divider">
                 <h4 class="featurette-heading2">Options d'aministrateur (Membre)</h4>
@@ -173,12 +220,86 @@
                     </p>
                 </form>
 
-            <?php } ?>
 
-        </div>
-        <div class="col-4 premier"></div>
-        <div class="col-2 premier"></div>
-    </div>
+            </div>
+            <div class="col-4 premier">
+
+                <hr class="featurette-divider">
+                <h4 class="featurette-heading2">Options d'aministrateur (Recette)</h4>
+                <br><br>
+
+                <form action="insert-recette.php" method="post">
+                    <p>
+                    <label for="idRecette"><strong>Entrer</strong> idRecette :</label>
+                    <input type="text" name="idRecette" id="idRecette" placeholder="id"/>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for="nomRecette"><strong>Modifier</strong> nom de la recette :</label>
+                    <input type="text" name="nomRecette" id="nomRecette" placeholder="nom"/>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for="apropos"><strong>Modifier</strong> a propos :</label>
+                    <textarea name="updateapropos" id="updateapropos" rows="3" cols="50" placeholder="Modifier description"></textarea>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for="ingredient"><strong>Modifier</strong> ingredient :</label>
+                    <textarea name="updateingredient" id="updateingredient" rows="3" cols="50" placeholder="Modifier .."></textarea>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for=preparation><strong>Modifier</strong> préparation :</label>
+                    <textarea name="updatepreparation" id="updatepreparation" rows="3" cols="50" placeholder="Modifier .."></textarea>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for="categorie"><strong>Modifier</strong> categorie</label><br />
+                    <select name="updatecategorie" id="updatecategorie">
+                        <option value="1">Viande</option>
+                        <option value="2" selected>Légume</option>
+                        <option value="3">Poisson</option>
+                        <option value="4">Fruit</option>
+                    </select>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for="PreparationTime"><strong>Modifier</strong> temps de préparation :</label>
+                    <input type="text" name="updatePreparationTime" id="updatePreparationTime" placeholder="exemple : 35 min"/>
+                    </p>
+                    <p>
+                    <label for="CuissonTime"><strong>Modifier</strong> temps de cuisson :</label>
+                    <input type="text" name="updateCuissonTime" id="updateCuissonTime" placeholder="exemple : 1h 45 min"/>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for="difficulte"><strong>Modifier<strong> difficulté</label><br>
+                                <select name="updatedifficulte" id="prix">
+                                    <option value="Facile">Facile</option>
+                                    <option value="Moyen" selected>Moyen</option>
+                                    <option value="Difficile">Difficile</option>
+                                </select>
+                                </p>
+                                <br><hr><br>
+                                <p>
+                                <label for="prix"><strong>Modifier</strong> Prix</label><br>
+                                <select name="updateprix" id="prix">
+                                    <option value="pascher">Pas cher</option>
+                                    <option value="abordable" selected>Abordable</option>
+                                    <option value="cher">Cher</option>
+                                </select>
+                                </p><br><br>
+                                <p>
+                                    <input class="btn btn-danger" type="submit" value="Modifier">
+                                </p>
+                                </form>
+
+                            <?php } ?>
+
+                            </div>
+                            <div class="col-2 premier"></div>
+                            </div>
 
 
-    <?php include("inc/footer.inc.php") ?>
+                            <?php include("inc/footer.inc.php") ?>
