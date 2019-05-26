@@ -34,7 +34,7 @@
                     </div>
                     <?php
                 }
-            } elseif (!empty($_POST['newpass'])) {
+            } if (!empty($_POST['newpass'])) {
 
                 $result2 = $pdo->query("UPDATE membres SET `password` = '$newpass' WHERE idMembre = $idMembre");
 
@@ -65,11 +65,14 @@
             </form><br><hr><br>
 
             <?php
-            if (!empty($_POST['delete'])) {
+            
+            $delete = filter_input(INPUT_POST, 'delete', FILTER_SANITIZE_STRING);
+            
+            if (!empty($delete)) {
 
                 $pdo->query("DELETE FROM `membres` WHERE idMembre = $idMembre");
                 session_destroy();
-                header('Location: index.php');
+                header('Location: connexion.php');
                 exit();
             }
             ?>
@@ -94,7 +97,7 @@
                     <p>
                         <input class = "btn btn-primary" type = "submit" value = "Trouvez">
                     </p>
-                </form><br><hr><br>
+                </form><br><br>
 
                 <?php
                 $viewrecette = filter_input(INPUT_POST, 'viewrecette', FILTER_SANITIZE_STRING);
@@ -108,6 +111,7 @@
                         <tr class="lead">
                         <th>IdRecette</th>
                         <th>titre</th>
+                        <th>A propos</th>
                         </tr>
                         <?php
                         while ($viewrecette = $resultat4->fetch(PDO::FETCH_OBJ)) {
@@ -116,6 +120,7 @@
                             <tr class="lead">
                             <td><?php echo $viewrecette->idRecette; ?></td>
                             <td><?php echo $viewrecette->titre; ?></td>
+                            <td><?php echo $viewrecette->chapo; ?></td>
                             </tr>
 
                         <?php }
@@ -228,15 +233,69 @@
                 <h4 class="featurette-heading2">Options d'aministrateur (Recette)</h4>
                 <br><br>
 
-                <form action="insert-recette.php" method="post">
+                <?php
+                $idRecette = filter_input(INPUT_POST, 'idRecette', FILTER_SANITIZE_STRING);
+                $titreRecette = filter_input(INPUT_POST, 'titreRecette', FILTER_SANITIZE_STRING);
+                $updateapropos = filter_input(INPUT_POST, 'updateapropos', FILTER_SANITIZE_STRING);
+                $updateingredient = filter_input(INPUT_POST, 'updateingredient', FILTER_SANITIZE_STRING);
+                $updatepreparation = filter_input(INPUT_POST, 'updatepreparation', FILTER_SANITIZE_STRING);
+                $updatecategorie = filter_input(INPUT_POST, 'updatecategorie', FILTER_SANITIZE_STRING);
+                $updatePreparationTime = filter_input(INPUT_POST, 'updatePreparationTime', FILTER_SANITIZE_STRING);
+                $updateCuissonTime = filter_input(INPUT_POST, 'updateCuissonTime', FILTER_SANITIZE_STRING);
+                $updatedifficulte = filter_input(INPUT_POST, 'updatedifficulte', FILTER_SANITIZE_STRING);
+                $updateprix = filter_input(INPUT_POST, 'updateprix', FILTER_SANITIZE_STRING);
+
+
+                if (!empty($idRecette)) {
+
+                    if (!empty($titreRecette)) {
+
+                        $resultat5 = $pdo->query("UPDATE recettes SET titre = '$titreRecette' WHERE idRecette = $idRecette");
+                    } if (!empty($updateapropos)) {
+
+                        $resultat6 = $pdo->query("UPDATE recettes SET chapo = '$updateapropos' WHERE idRecette = $idRecette");
+                    } if (!empty($updateingredient)) {
+
+                        $resultat7 = $pdo->query("UPDATE recettes SET ingredient = '$updateingredient' WHERE idRecette = $idRecette");
+                    } if (!empty($updatepreparation)) {
+
+                        $resultat8 = $pdo->query("UPDATE recettes SET preparation = '$updatepreparation' WHERE idRecette = $idRecette");
+                    } if (!empty($updatecategorie)) {
+
+                        $resultat9 = $pdo->query("UPDATE recettes SET categorie = '$updatecategorie' WHERE idRecette = $idRecette");
+                    } if (!empty($updatePreparationTime)) {
+
+                        $resultat10 = $pdo->query("UPDATE recettes SET tempsPreparation = '$updatePreparationTime' WHERE idRecette = $idRecette");
+                    } if (!empty($updateCuissonTime)) {
+
+                        $resultat11 = $pdo->query("UPDATE recettes SET tempsCuisson = '$updateCuissonTime' WHERE idRecette = $idRecette");
+                    } if (!empty($updatedifficulte)) {
+
+                        $resultat12 = $pdo->query("UPDATE recettes SET difficulte = '$updatedifficulte' WHERE idRecette = $idRecette");
+                    } if (!empty($updateprix)) {
+
+                        $resultat13 = $pdo->query("UPDATE recettes SET prix = '$updateprix' WHERE idRecette = $idRecette");
+                    }
+                    ?>
+                    <div class = "alert alert-success" role = "alert">
+                        Recette mise à jour
+                    </div>
+                <?php } else { ?>
+                    <div class = "alert alert-danger" role = "alert">
+                        Problème ..
+                    </div>
+                <?php } ?>
+
+                <form action="profile.php" method="post">
+
                     <p>
                     <label for="idRecette"><strong>Entrer</strong> idRecette :</label>
                     <input type="text" name="idRecette" id="idRecette" placeholder="id"/>
                     </p>
                     <br><hr><br>
                     <p>
-                    <label for="nomRecette"><strong>Modifier</strong> nom de la recette :</label>
-                    <input type="text" name="nomRecette" id="nomRecette" placeholder="nom"/>
+                    <label for="titreRecette"><strong>Modifier</strong> nom de la recette :</label>
+                    <input type="text" name="titreRecette" id="titreRecette" placeholder="nom"/>
                     </p>
                     <br><hr><br>
                     <p>
@@ -255,7 +314,7 @@
                     </p>
                     <br><hr><br>
                     <p>
-                    <label for="categorie"><strong>Modifier</strong> categorie</label><br />
+                    <label for="updatecategorie"><strong>Modifier</strong> categorie</label><br />
                     <select name="updatecategorie" id="updatecategorie">
                         <option value="1">Viande</option>
                         <option value="2" selected>Légume</option>
@@ -265,7 +324,7 @@
                     </p>
                     <br><hr><br>
                     <p>
-                    <label for="PreparationTime"><strong>Modifier</strong> temps de préparation :</label>
+                    <label for="updatePreparationTime"><strong>Modifier</strong> temps de préparation :</label>
                     <input type="text" name="updatePreparationTime" id="updatePreparationTime" placeholder="exemple : 35 min"/>
                     </p>
                     <p>
@@ -274,7 +333,7 @@
                     </p>
                     <br><hr><br>
                     <p>
-                    <label for="difficulte"><strong>Modifier<strong> difficulté</label><br>
+                    <label for="updatedifficulte"><strong>Modifier<strong> difficulté</label><br>
                                 <select name="updatedifficulte" id="prix">
                                     <option value="Facile">Facile</option>
                                     <option value="Moyen" selected>Moyen</option>
@@ -283,7 +342,7 @@
                                 </p>
                                 <br><hr><br>
                                 <p>
-                                <label for="prix"><strong>Modifier</strong> Prix</label><br>
+                                <label for="updateprix"><strong>Modifier</strong> Prix</label><br>
                                 <select name="updateprix" id="prix">
                                     <option value="pascher">Pas cher</option>
                                     <option value="abordable" selected>Abordable</option>
@@ -293,6 +352,7 @@
                                 <p>
                                     <input class="btn btn-danger" type="submit" value="Modifier">
                                 </p>
+
                                 </form>
 
                             <?php } ?>
