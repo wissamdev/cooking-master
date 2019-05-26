@@ -11,7 +11,9 @@
         <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/carousel/">
 
         <!-- Jquery CDN -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+        crossorigin="anonymous"></script>
 
         <!-- Bootstrap core CSS -->
         <link href="bootstrap/bootstrap-grid.css" rel="stylesheet">
@@ -34,13 +36,15 @@
                 <a class="navbar-brand" href="index.php">
                     <img src="images/logo-cooking1.png" alt="logo" width="116px" height="32px"/>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" 
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Compte
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -72,7 +76,8 @@
                         </li>
                     </ul>
                     <form class="form-inline mt-2 mt-md-0" action="recette-detail.php" method="post">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Chercher une recette" aria-label="Search" name="recette">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Chercher une recette" 
+                               aria-label="Search" name="recette">
                         <button class="btn btn-outline-light" type="submit">Chercher</button>
                     </form>
                 </div>
