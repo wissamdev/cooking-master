@@ -1,6 +1,6 @@
 <?php include("inc/header.inc.php") ?>
 
-<!-- --------------------------------------------------------- CONTENT ------------------------------------------------- -->
+<!--  CONTENT  -->
 <main role="main">
 
     <div class="container marketing">
