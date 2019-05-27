@@ -21,7 +21,7 @@
             <?php
             $newpseudo = filter_input(INPUT_POST, 'newpseudo', FILTER_SANITIZE_STRING);
             $idMembre = $_SESSION["idMembres"];
-            $newpass = sha1(filter_input(INPUT_POST, 'newpass', FILTER_SANITIZE_STRING));
+            $newpass = filter_input(INPUT_POST, 'newpass', FILTER_SANITIZE_STRING);
 
             if (!empty($newpseudo)) {
 
@@ -34,9 +34,10 @@
                     </div>
                     <?php
                 }
-            } if (!empty($_POST['newpass'])) {
+            } if (!empty($newpass)) {
 
-                $result2 = $pdo->query("UPDATE membres SET `password` = '$newpass' WHERE idMembre = $idMembre");
+                $newpass_crypt = sha1($newpass);
+                $result2 = $pdo->query("UPDATE membres SET `password` = '$newpass_crypt' WHERE idMembre = $idMembre");
 
                 if ($result2 == true) {
                     ?>
