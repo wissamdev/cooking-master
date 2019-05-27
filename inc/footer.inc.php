@@ -15,6 +15,5 @@
             <img src="images/youtube.png" alt=""/></a>
     </p>
 </footer>
-</main>
 </body>
 </html>

@@ -29,12 +29,14 @@
                     <hr class="featurette-divider">
                     <p>
                     <label for="ingredient"><strong>Ingredient</strong> :</label>
-                    <textarea name="ingredient" id="ingredient" rows="3" cols="50" placeholder="Ecrire les ingredients necessaires .."></textarea>
+                    <textarea name="ingredient" id="ingredient" rows="3" cols="50" 
+                              placeholder="Ecrire les ingredients necessaires .."></textarea>
                     </p>
                     <hr class="featurette-divider">
                     <p>
                     <label for=preparation><strong>Préparation</strong> :</label>
-                    <textarea name="preparation" id="preparation" rows="3" cols="50" placeholder="Ecrire les étapes à suivre .."></textarea>
+                    <textarea name="preparation" id="preparation" rows="3" cols="50" 
+                              placeholder="Ecrire les étapes à suivre .."></textarea>
                     </p>
                     <hr class="featurette-divider">
                     <h6><strong>Categorie</strong> :</h6><br>

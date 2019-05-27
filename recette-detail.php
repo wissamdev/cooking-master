@@ -31,16 +31,21 @@
                         <h2 class="featurette-heading"><?php echo $recettes->titre; ?></h2><br>
                         <h2 class="featurette-heading2">Publié par :&nbsp; <?php echo $recettes->prenom; ?></h2><br>
                         <h4 class="featurette-heading2"><strong>Catégorie : &nbsp;</strong><?php echo $recettes->nomCategorie; ?></h4><br>
-                        <h4 class="featurette-heading2"><img src="images/cuisson.png" alt=""/><strong>&nbsp; Chapo</strong></h4>
+                        <h4 class="featurette-heading2"><img src="images/cuisson.png" alt=""/>
+                            <strong>&nbsp; Chapo</strong></h4>
                         <p class="lead"><?php echo $recettes->chapo; ?></p><br>
-                        <h4 class="featurette-heading2"><img src="images/cuisson.png" alt=""/><strong>&nbsp; Préparation</strong></h4>
+                        <h4 class="featurette-heading2"><img src="images/cuisson.png" alt=""/>
+                            <strong>&nbsp; Préparation</strong></h4>
                         <p class="lead"><?php echo $recettes->preparation; ?></p><br>
-                        <h4 class="featurette-heading2"><img src="images/fourchette.png" alt=""/><strong>&nbsp; Ingrédient</strong></h4>
+                        <h4 class="featurette-heading2"><img src="images/fourchette.png" alt=""/>
+                            <strong>&nbsp; Ingrédient</strong></h4>
                         <p class="lead"><?php echo $recettes->ingredient; ?></p><br>
-                        <h4 class="featurette-heading2"><img src="images/temps.png" alt=""/> <strong>&nbsp; Temps</strong></h4>
+                        <h4 class="featurette-heading2"><img src="images/temps.png" alt=""/>
+                            <strong>&nbsp; Temps</strong></h4>
                         <p class="lead">Préparation :&nbsp;<?php echo $recettes->tempsPreparation; ?></p>
                         <p class="lead">Cuisson :&nbsp;<?php echo $recettes->tempsCuisson; ?></p><br>
-                        <h4 class="featurette-heading2"><img src="images/prix.png" alt=""/><strong>&nbsp; Prix</strong></h4>
+                        <h4 class="featurette-heading2"><img src="images/prix.png" alt=""/>
+                            <strong>&nbsp; Prix</strong></h4>
                         <p class="lead"><?php echo $recettes->prix; ?></p>
                         <hr class="featurette-divider">
                     </div>

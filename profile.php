@@ -64,20 +64,7 @@
                 </p>
             </form><br><hr><br>
 
-            <?php
-            
-            $delete = filter_input(INPUT_POST, 'delete', FILTER_SANITIZE_STRING);
-            
-            if (!empty($delete)) {
-
-                $pdo->query("DELETE FROM `membres` WHERE idMembre = $idMembre");
-                session_destroy();
-                header('Location: connexion.php');
-                exit();
-            }
-            ?>
-
-            <form action="profile.php" method="post">
+            <form action="killaccount.php" method="post">
                 <p><strong>Supprimer</strong> mon compte </p>
                 <input class="btn btn-danger" name="delete" type="submit" value="Supprimer">
             </form>
@@ -280,10 +267,6 @@
                     <div class = "alert alert-success" role = "alert">
                         Recette mise à jour
                     </div>
-                <?php } else { ?>
-                    <div class = "alert alert-danger" role = "alert">
-                        Problème ..
-                    </div>
                 <?php } ?>
 
                 <form action="profile.php" method="post">
@@ -300,17 +283,20 @@
                     <br><hr><br>
                     <p>
                     <label for="apropos"><strong>Modifier</strong> a propos :</label>
-                    <textarea name="updateapropos" id="updateapropos" rows="3" cols="50" placeholder="Modifier description"></textarea>
+                    <textarea name="updateapropos" id="updateapropos" rows="3" cols="50" 
+                              placeholder="Modifier description"></textarea>
                     </p>
                     <br><hr><br>
                     <p>
                     <label for="ingredient"><strong>Modifier</strong> ingredient :</label>
-                    <textarea name="updateingredient" id="updateingredient" rows="3" cols="50" placeholder="Modifier .."></textarea>
+                    <textarea name="updateingredient" id="updateingredient" rows="3" cols="50" 
+                              placeholder="Modifier .."></textarea>
                     </p>
                     <br><hr><br>
                     <p>
                     <label for=preparation><strong>Modifier</strong> préparation :</label>
-                    <textarea name="updatepreparation" id="updatepreparation" rows="3" cols="50" placeholder="Modifier .."></textarea>
+                    <textarea name="updatepreparation" id="updatepreparation" rows="3" cols="50" 
+                              placeholder="Modifier .."></textarea>
                     </p>
                     <br><hr><br>
                     <p>
@@ -325,11 +311,13 @@
                     <br><hr><br>
                     <p>
                     <label for="updatePreparationTime"><strong>Modifier</strong> temps de préparation :</label>
-                    <input type="text" name="updatePreparationTime" id="updatePreparationTime" placeholder="exemple : 35 min"/>
+                    <input type="text" name="updatePreparationTime" id="updatePreparationTime" 
+                           placeholder="exemple : 35 min"/>
                     </p>
                     <p>
                     <label for="CuissonTime"><strong>Modifier</strong> temps de cuisson :</label>
-                    <input type="text" name="updateCuissonTime" id="updateCuissonTime" placeholder="exemple : 1h 45 min"/>
+                    <input type="text" name="updateCuissonTime" id="updateCuissonTime" 
+                           placeholder="exemple : 1h 45 min"/>
                     </p>
                     <br><hr><br>
                     <p>

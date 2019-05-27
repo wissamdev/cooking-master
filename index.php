@@ -77,19 +77,23 @@
                 <div class="row featurette">
                     <div class="col-md-7 order-md-1">
                         <h2 class="featurette-heading">Bonjour</h2><br>
-                        <p class="lead">Vous avez un déjeuner ou un diner à préparer pour vos invités mais manquez d’inspiration ?
-                            Un petit voyage sur cette sélection de recette de cuisine devrait résoudre votre problème.</p>
-                        <p class="lead">L'Entreprise Cooking depuis 8 ans maintenant</p>
+                            <p class="lead">Vous avez un déjeuner ou un diner à 
+                                préparer pour vos invités mais manquez d’inspiration ?
+                                Un petit voyage sur cette sélection de recette de 
+                                cuisine devrait résoudre votre problème.</p>
+                            <p class="lead">L'Entreprise Cooking depuis 8 ans maintenant</p>
                     </div>
                     <div class="col-md-5 order-md-2">
-                        <img class="imgAcceuil" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
+                        <img class="imgAcceuil" 
+                             class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
                              src="photos/slides/creme-petits-poids.jpg" alt="slide"/>
                     </div>
                 </div>
         </div>
+</main>
 
 
-        <!-- /END THE FEATURETTES -->
+<!-- /END THE FEATURETTES -->
 
-    </div><!-- /.container -->
-    <?php include("inc/footer.inc.php") ?>
+</div><!-- /.container -->
+<?php include("inc/footer.inc.php") ?>
