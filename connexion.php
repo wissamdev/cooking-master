@@ -25,6 +25,7 @@ if (!empty($_POST)) {
         } elseif ($membres->statut == 'admin') {
             header('Location: inc/checklog.php');
         } elseif ($membres->statut == 'block') {
+            session_destroy();
             ?>
             <div class="alert alert-danger" role="alert">Compte bloqué ...</div>
             <?php
@@ -39,9 +40,7 @@ if (!empty($_POST)) {
     <hr class="featurette-divider">
     <div class="row">
 
-        <div class="col-4 premier">
-            <?= var_dump($membres); ?>
-        </div>
+        <div class="col-4 premier"></div>
 
         <!-- <div class="col-3 offset-3 second"> -->
         <div class="col-4 second">

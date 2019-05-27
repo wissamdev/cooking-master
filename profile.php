@@ -78,8 +78,12 @@
                 <h4 class="featurette-heading2">ADMINISTRATEUR</h4><br><br>    
                 <form action = "profile.php" method = "post">
                     <p>
-                    <label for = "ban"><strong>Trouver</strong> une recette :</label>
+                    <label for = "find"><strong>Trouver</strong> une recette :</label>
                     <input type = "text" name = "viewrecette" id = "viewrecette" placeholder = "recette"/>
+                    </p><br>
+                    <p>
+                    <label for = "find"><strong>Trouver</strong> un membre :</label>
+                    <input type = "text" name = "viewmembre" id = "viewmembre" placeholder = "pseudo"/>
                     </p>
                     <br>
                     <p>
@@ -89,35 +93,66 @@
 
                 <?php
                 $viewrecette = filter_input(INPUT_POST, 'viewrecette', FILTER_SANITIZE_STRING);
-
-                $resultat4 = $pdo->query("SELECT * FROM recettes WHERE titre LIKE '%$viewrecette%'");
+                $viewmembre = filter_input(INPUT_POST, 'viewmembre', FILTER_SANITIZE_STRING);
 
                 if (!empty($viewrecette)) {
                     ?>
 
-                    <table class="table table-striped" border="solid 1px black" >
-                        <tr class="lead">
-                        <th>IdRecette</th>
-                        <th>titre</th>
-                        <th>A propos</th>
-                        </tr>
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr class="lead">
+                            <th>IdRecette</th>
+                            <th>titre</th>
+                            <th>A propos</th>
+                            </tr>
+                        </thead>
                         <?php
+                        $resultat4 = $pdo->query("SELECT * FROM recettes WHERE titre LIKE '%$viewrecette%'");
                         while ($viewrecette = $resultat4->fetch(PDO::FETCH_OBJ)) {
                             ?>
-
-                            <tr class="lead">
-                            <td><?php echo $viewrecette->idRecette; ?></td>
-                            <td><?php echo $viewrecette->titre; ?></td>
-                            <td><?php echo $viewrecette->chapo; ?></td>
-                            </tr>
+                            <tbody>
+                                <tr class="lead">
+                                <td><?php echo $viewrecette->idRecette; ?></td>
+                                <td><?php echo $viewrecette->titre; ?></td>
+                                <td><?php echo $viewrecette->chapo; ?></td>
+                                </tr>
+                            </tbody>
 
                         <?php }
                         ?>
                     </table>
                     <?php
-                } else {
-                    var_dump($viewrecette);
-                }
+                } if (!empty($viewmembre)) {
+                    ?>
+
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr class="lead">
+                            <th>IdMembre</th>
+                            <th>login</th>
+                            <th>statut</th>
+                            <th>prenom</th>
+                            <th>nom</th>
+                            </tr>
+                        </thead>
+                        <?php
+                        $viewmembreresult = $pdo->query("SELECT * FROM membres WHERE login LIKE '%$viewmembre%'");
+                        while ($viewmembre = $viewmembreresult->fetch(PDO::FETCH_OBJ)) {
+                            ?>
+                            <tbody>
+                                <tr class="lead">
+                                <td><?php echo $viewmembre->idMembre; ?></td>
+                                <td><?php echo $viewmembre->login; ?></td>
+                                <td><?php echo $viewmembre->statut; ?></td>
+                                <td><?php echo $viewmembre->prenom; ?></td>
+                                <td><?php echo $viewmembre->nom; ?></td>
+                                </tr>
+                            </tbody>
+
+                        <?php }
+                        ?>
+                    </table>
+                <?php }
                 ?>
 
 
@@ -137,15 +172,25 @@
                 <?php
                 $block = filter_input(INPUT_POST, 'block', FILTER_SANITIZE_STRING);
                 $ban = filter_input(INPUT_POST, 'ban', FILTER_SANITIZE_STRING);
-                $membre = filter_input(INPUT_POST, 'membre', FILTER_SANITIZE_STRING);
+                $idMembre = filter_input(INPUT_POST, 'idMembre', FILTER_SANITIZE_STRING);
                 $newstatut = filter_input(INPUT_POST, 'newstatut', FILTER_SANITIZE_STRING);
+                $prenomMembre = filter_input(INPUT_POST, 'prenomMembre', FILTER_SANITIZE_STRING);
+                $nomMembre = filter_input(INPUT_POST, 'nomMembre', FILTER_SANITIZE_STRING);
 
-                if (!empty($membre)) {
+                if (!empty($idMembre)) {
 
-                    $resultat3 = $pdo->query("SELECT * FROM membres WHERE login = '$membre'");
-                    $exist = $resultat3->fetch(PDO::FETCH_OBJ);
+                    $resultat3 = $pdo->query("SELECT * FROM membres WHERE idMembre = '$idMembre'");
 
-                    if ($exist == false) {
+                    if (!empty($prenomMembre)) {
+
+                        $pdo->query("UPDATE membres SET prenom = '$prenomMembre' WHERE idMembre = '$idMembre'");
+                    } if (!empty($nomMembre)) {
+
+                        $pdo->query("UPDATE membres SET nom = '$nomMembre' WHERE idMembre = '$idMembre'");
+                    } if (!empty($newstatut)) {
+
+                        $pdo->query("UPDATE membres SET statut = '$newstatut' WHERE idMembre = '$idMembre'");
+                    } if ($resultat3 == false) {
                         ?>
                         <div class = "alert alert-danger" role = "alert">
                             identifiant Non Trouvé
@@ -154,19 +199,32 @@
                     } else {
                         ?>
                         <div class = "alert alert-success" role = "alert">
-                            Statut du membre modifié !
+                            Update !
                         </div>
                         <?php
                     }
-
-                    $pdo->query("UPDATE membres SET statut = '$newstatut' WHERE login = '$membre'");
                 }
                 ?>
                 <form action = "profile.php" method = "post">
+
                     <p>
-                    <label for = "membre"><strong>Entrer le pseudo</strong> d'un membre pour 
+                    <label for="idMembre"><strong class='warning'>Entrer idMembre</strong> :</label>
+                    <input type="text" name="idMembre" id="idMembre" placeholder="id"/>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for="prenomMembre"><strong>Modifier</strong> prenom du membre :</label>
+                    <input type="text" name="prenomMembre" id="prenomMembre" placeholder="prenom"/>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for="nomMembre"><strong>Modifier</strong> nom du membre :</label>
+                    <input type="text" name="nomMembre" id="nomMembre" placeholder="nom"/>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for = "membre"> 
                         <strong>Modifier</strong> son statut :</label>
-                    <input type = "text" name = "membre" id = "membre" placeholder = "statut"/>
                     </p><br>
                     <select name="newstatut" id="prix">
                         <option value="admin">Admin</option>
@@ -176,15 +234,17 @@
                     <p>
                         <input class = "btn btn-danger" type = "submit" value = "Modifier">
                     </p>
+                    <br><hr><br>
+                    <p>
+                    <label for = "ban"><strong>Bannir</strong> ce membre :</label>
+                    <input class = "btn btn-danger" name = "ban" type = "submit" value = "Bannir">
+                    </p>
                 </form>
                 <br><hr><br>
                 <?php
                 if (!empty($ban)) {
 
-                    $resultat = $pdo->query("SELECT * FROM membres WHERE login = '$ban'");
-                    $exist = $resultat->fetch(PDO::FETCH_OBJ);
-
-                    if ($exist == false) {
+                    if ($resultat3 == false) {
                         ?>
                         <div class = "alert alert-danger" role = "alert">
                             identifiant Non Trouvé
@@ -198,20 +258,9 @@
                         <?php
                     }
 
-                    $pdo->query("DELETE FROM `membres` WHERE login = '$ban'");
+                    $pdo->query("DELETE FROM `membres` WHERE idMembre = '$idMembre'");
                 }
                 ?>
-                <form action = "profile.php" method = "post">
-                    <br>
-                    <p>
-                    <label for = "ban"><strong>Bannir</strong> un membre :</label>
-                    <input type = "text" name = "ban" id = "ban" placeholder = "pseudo"/>
-                    </p>
-                    <br>
-                    <p>
-                        <input class = "btn btn-danger" type = "submit" value = "Bannir">
-                    </p>
-                </form>
 
 
             </div>
@@ -266,14 +315,14 @@
                     }
                     ?>
                     <div class = "alert alert-success" role = "alert">
-                        Recette mise à jour
+                        Update !
                     </div>
                 <?php } ?>
 
                 <form action="profile.php" method="post">
 
                     <p>
-                    <label for="idRecette"><strong>Entrer</strong> idRecette :</label>
+                    <label for="idRecette"><strong class='warning' >Entrer idRecette</strong> :</label>
                     <input type="text" name="idRecette" id="idRecette" placeholder="id"/>
                     </p>
                     <br><hr><br>
@@ -322,33 +371,33 @@
                     </p>
                     <br><hr><br>
                     <p>
-                    <label for="updatedifficulte"><strong>Modifier<strong> difficulté</label><br>
-                                <select name="updatedifficulte" id="prix">
-                                    <option value="Facile">Facile</option>
-                                    <option value="Moyen" selected>Moyen</option>
-                                    <option value="Difficile">Difficile</option>
-                                </select>
-                                </p>
-                                <br><hr><br>
-                                <p>
-                                <label for="updateprix"><strong>Modifier</strong> Prix</label><br>
-                                <select name="updateprix" id="prix">
-                                    <option value="pascher">Pas cher</option>
-                                    <option value="abordable" selected>Abordable</option>
-                                    <option value="cher">Cher</option>
-                                </select>
-                                </p><br><br>
-                                <p>
-                                    <input class="btn btn-danger" type="submit" value="Modifier">
-                                </p>
+                    <label for="updatedifficulte"><strong>Modifier</strong> difficulté</label><br>
+                    <select name="updatedifficulte" id="prix">
+                        <option value="Facile">Facile</option>
+                        <option value="Moyen" selected>Moyen</option>
+                        <option value="Difficile">Difficile</option>
+                    </select>
+                    </p>
+                    <br><hr><br>
+                    <p>
+                    <label for="updateprix"><strong>Modifier</strong> Prix</label><br>
+                    <select name="updateprix" id="prix">
+                        <option value="pascher">Pas cher</option>
+                        <option value="abordable" selected>Abordable</option>
+                        <option value="cher">Cher</option>
+                    </select>
+                    </p><br><br>
+                    <p>
+                        <input class="btn btn-danger" type="submit" value="Modifier">
+                    </p>
 
-                                </form>
+                </form>
 
-                            <?php } ?>
+            <?php } ?>
 
-                            </div>
-                            <div class="col-2 premier"></div>
-                            </div>
+        </div>
+        <div class="col-2 premier"></div>
+    </div>
 
 
-                            <?php include("inc/footer.inc.php") ?>
+    <?php include("inc/footer.inc.php") ?>

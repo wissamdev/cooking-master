@@ -15,7 +15,7 @@ body {
     letter-spacing: -.05rem;
     text-align: center;
     font-size: 60px;
-    color: blue;
+    color: #0F0F0F;
 }
 
 div.col-md-12 {
@@ -27,7 +27,7 @@ table {
 }
 
 h2.featurette-heading {
-    color: blue;
+    color: #0F0F0F;
     margin-top: 0px;
     text-align: center;
 }
@@ -40,6 +40,13 @@ input, textarea, select {
     float: right;
 }
 
+#titreCarousel, #chapoCarousel {
+    color: #0F0F0F;
+}
+
+.warning {
+    color: red;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -90,7 +97,7 @@ input, textarea, select {
     font-weight: 100;
     line-height: 1;
     letter-spacing: -.05rem;
-    color: blue;
+    color: #0F0F0F;
 }
 
 

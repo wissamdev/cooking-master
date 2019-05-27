@@ -39,8 +39,8 @@
                                 <img src="photos/recettes/<?= $aleatoire->img; ?>" alt="marmelade"/>
                                 <div class="container">
                                     <div class="carousel-caption">
-                                        <h1><?php echo $aleatoire->titre; ?></h1>
-                                        <p><?php echo $aleatoire->chapo; ?></p>
+                                        <h1 id="titreCarousel" ><?php echo $aleatoire->titre; ?></h1>
+                                        <p id="chapoCarousel" ><?php echo $aleatoire->chapo; ?></p>
                                     </div>
                                 </div>
                             </div>
