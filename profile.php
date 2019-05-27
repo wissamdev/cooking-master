@@ -25,6 +25,7 @@
 
             if (!empty($newpseudo)) {
 
+                // Modification de login 
                 $result = $pdo->query("UPDATE membres SET login = '$newpseudo' WHERE idMembre = $idMembre");
 
                 if ($result == true) {
@@ -36,6 +37,7 @@
                 }
             } if (!empty($newpass)) {
 
+                // Modification de mot de passe 
                 $newpass_crypt = sha1($newpass);
                 $result2 = $pdo->query("UPDATE membres SET `password` = '$newpass_crypt' WHERE idMembre = $idMembre");
 
@@ -70,8 +72,9 @@
                 <input class="btn btn-danger" name="delete" type="submit" value="Supprimer">
             </form>
             <hr class="featurette-divider">
-
-
+            <p><a href="export.php">Mes Infos</a></p>
+            
+            <!-- RESERVE AUX ADMIN -->
 
             <?php if ($_SESSION["statut"] == 'admin') { ?>
 
@@ -94,6 +97,8 @@
                 <?php
                 $viewrecette = filter_input(INPUT_POST, 'viewrecette', FILTER_SANITIZE_STRING);
                 $viewmembre = filter_input(INPUT_POST, 'viewmembre', FILTER_SANITIZE_STRING);
+                
+                // Selection recette
 
                 if (!empty($viewrecette)) {
                     ?>
@@ -122,6 +127,7 @@
                         ?>
                     </table>
                     <?php
+                    // Selection membre
                 } if (!empty($viewmembre)) {
                     ?>
 
@@ -176,6 +182,8 @@
                 $newstatut = filter_input(INPUT_POST, 'newstatut', FILTER_SANITIZE_STRING);
                 $prenomMembre = filter_input(INPUT_POST, 'prenomMembre', FILTER_SANITIZE_STRING);
                 $nomMembre = filter_input(INPUT_POST, 'nomMembre', FILTER_SANITIZE_STRING);
+                
+                
 
                 if (!empty($idMembre)) {
 
@@ -242,6 +250,8 @@
                 </form>
                 <br><hr><br>
                 <?php
+                // Drop membre
+                
                 if (!empty($ban)) {
 
                     if ($resultat3 == false) {
@@ -281,6 +291,9 @@
                 $updateCuissonTime = filter_input(INPUT_POST, 'updateCuissonTime', FILTER_SANITIZE_STRING);
                 $updatedifficulte = filter_input(INPUT_POST, 'updatedifficulte', FILTER_SANITIZE_STRING);
                 $updateprix = filter_input(INPUT_POST, 'updateprix', FILTER_SANITIZE_STRING);
+                $sup = filter_input(INPUT_POST, 'sup', FILTER_SANITIZE_STRING);
+                
+                // Modification des donnés des recettes
 
 
                 if (!empty($idRecette)) {
@@ -390,8 +403,37 @@
                     <p>
                         <input class="btn btn-danger" type="submit" value="Modifier">
                     </p>
+                    <br><hr><br>
+                    <p>
+                    <label for = "sup"><strong>Supprimer</strong> cette recette :</label>
+                    <input class = "btn btn-danger" name = "sup" type = "submit" value = "Supprimer">
+                    </p>
 
                 </form>
+                <?php
+                // Drop recette
+                
+                if (!empty($sup)) {
+
+                    $resultat14 = $pdo->query("SELECT * FROM recettes WHERE idRecette = '$idRecette'");
+
+                    if ($idRecette == false) {
+                        ?>
+                        <div class = "alert alert-danger" role = "alert">
+                            identifiant Non Trouvé
+                        </div>
+                        <?php
+                    } else {
+                        ?>
+                        <div class = "alert alert-success" role = "alert">
+                            Membre Banni !
+                        </div>
+                        <?php
+                    }
+
+                    $pdo->query("DELETE FROM `recettes` WHERE idRecette = '$idRecette'");
+                }
+                ?>
 
             <?php } ?>
 

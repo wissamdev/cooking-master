@@ -25,6 +25,8 @@
                         </tr>
                     </thead>
                     <?php
+                    // Requete de selections des membres
+
                     $result3 = $pdo->query("SELECT * FROM membres");
                     $membres = $result3->fetch(PDO::FETCH_OBJ);
 

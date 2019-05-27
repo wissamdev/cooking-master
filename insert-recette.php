@@ -1,6 +1,7 @@
 <?php include("inc/init.inc.php") ?>    
 
 <?php
+// Requete d'insertion de Recette
 
 $nomRecette = filter_input(INPUT_POST, 'nomRecette', FILTER_SANITIZE_STRING);
 $apropos = filter_input(INPUT_POST, 'apropos', FILTER_SANITIZE_STRING);

@@ -1,6 +1,8 @@
 <?php 
 include("inc/init.inc.php");
 
+// Requete pour supprimer son compte
+
 $delete = filter_input(INPUT_POST, 'delete', FILTER_SANITIZE_STRING);
 $idMembre = $_SESSION["idMembres"];
 

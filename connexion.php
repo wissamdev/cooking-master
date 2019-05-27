@@ -1,5 +1,6 @@
 <?php include("inc/header.inc.php") ?>
 <?php
+/* Requete pour ce connecter */
 if (!empty($_POST)) {
     $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING);
     $pass = sha1(filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING));

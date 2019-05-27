@@ -18,12 +18,11 @@
 
         <div class="row featurette">
             <?php
-            //var_dump($_POST[recette]);
+            // Selection des recettes
             $recette = filter_input(INPUT_POST, 'recette', FILTER_SANITIZE_STRING);
             if (!empty($recette)) {
-                //$recette = trim($_POST[recette]);
+                
                 $result = $pdo->query("SELECT * FROM recettes r, categories c, membres m WHERE r.titre LIKE '%$recette%' AND r.categorie = c.idCategorie AND r.membre = m.idMembre");
-                //$recettes = $result->fetch(PDO::FETCH_OBJ);
 
                 while ($recettes = $result->fetch(PDO::FETCH_OBJ)) {
                     ?>
