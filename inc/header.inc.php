@@ -1,6 +1,6 @@
 <?php include("inc/init.inc.php"); ?>
 <!doctype html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,7 +34,7 @@
         <header>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
                 <a class="navbar-brand" href="index.php">
-                    <img src="images/logo-cooking1.png" alt="logo" width="116px" height="32px"/>
+                    <img src="images/logo-cooking1.png" alt="logo" width="116" height="32"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" 
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
