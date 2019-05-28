@@ -32,11 +32,11 @@ h2.featurette-heading {
     text-align: center;
 }
 
-.imgAcceuil {
+#imgAcceuil {
     box-shadow: 1px 1px 12px #555;
 }
 
-#titreCarousel, #chapoCarousel {
+.titreCarousel, .chapoCarousel {
     color: #0F0F0F;
 }
 
@@ -44,7 +44,7 @@ h2.featurette-heading {
     color: red;
 }
 
-#rightalign {
+.btn, .badge {
     float: right;
 }
 

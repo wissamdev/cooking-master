@@ -9,7 +9,7 @@
 </script>
 
 
-<main role="main">
+<main>
     <div class="container-fluid">
         <div class="row">
             <div class="col-1 premier"></div>
@@ -39,8 +39,8 @@
                                 <img src="photos/recettes/<?= $aleatoire->img; ?>" alt="marmelade"/>
                                 <div class="container">
                                     <div class="carousel-caption">
-                                        <h1 id="titreCarousel" ><?php echo $aleatoire->titre; ?></h1>
-                                        <p id="chapoCarousel" ><?php echo $aleatoire->chapo; ?></p>
+                                        <h1 class="titreCarousel" ><?php echo $aleatoire->titre; ?></h1>
+                                        <p class="chapoCarousel" ><?php echo $aleatoire->chapo; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -84,16 +84,18 @@
                             <p class="lead">L'Entreprise Cooking depuis 8 ans maintenant</p>
                     </div>
                     <div class="col-md-5 order-md-2">
-                        <img class="imgAcceuil" 
+                        <img id="imgAcceuil" 
                              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
                              src="photos/slides/creme-petits-poids.jpg" alt="slide"/>
                     </div>
                 </div>
         </div>
+    </div>
+
 </main>
 
 
 <!-- /END THE FEATURETTES -->
 
-</div><!-- /.container -->
+<!-- /.container -->
 <?php include("inc/footer.inc.php") ?>

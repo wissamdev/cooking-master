@@ -66,10 +66,10 @@
             </form><br><hr><br>
 
             <form action="killaccount.php" method="post">
-                <input class="btn btn-danger" id="rightalign" name="delete" type="submit" value="Supprimer Mon Compte">
+                <input class="btn btn-danger" name="delete" type="submit" value="Supprimer Mon Compte">
             </form>
             <hr class="featurette-divider">
-            <a href="vosinfos.csv" class="badge badge-primary" id="rightalign">Mes Infos</a><br>
+            <a href="vosinfos.csv" class="badge badge-primary">Mes Infos</a><br>
 
             <!-- RESERVE AUX ADMIN -->
 
@@ -234,7 +234,7 @@
                     </p>
                     <br><br>
                     <p>
-                    <button type="submit" class="btn btn-danger" id="rightalign" name= "ban">Bannir</button>
+                    <button type="submit" class="btn btn-danger" name= "ban">Bannir</button>
                     </p>
                 </form>
                 <br><hr><br>
@@ -384,7 +384,7 @@
                     </p>
                     <br><hr><br>
                     <p>
-                    <input id="rightalign" class = "btn btn-danger" name = "sup" type = "submit" value = "Supprimer">
+                    <input class = "btn btn-danger" name = "sup" type = "submit" value = "Supprimer">
                     </p>
 
                 </form>
