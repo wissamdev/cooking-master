@@ -9,7 +9,7 @@ $idDuConcerne = $_SESSION['idMembres'];
 $afficheInfo = $pdo->query("SELECT * FROM membres WHERE idMembre = $idDuConcerne");
 $informations = $afficheInfo->fetch(PDO ::FETCH_OBJ);
 
-var_dump($informations);
+
 
 $list = array(
     array('idMembre', 'gravatar', 'login', 'statut', 'prenom', 'nom', 'dateCrea'),
@@ -18,7 +18,12 @@ $list = array(
 );
 
 $f = fopen("vosinfos.csv", "w");
+
+
 foreach ($list as $fields) {
     fputcsv($f, $fields);
 }
+
 fclose($f);
+
+?>

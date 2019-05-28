@@ -72,8 +72,9 @@
                 <input class="btn btn-danger" name="delete" type="submit" value="Supprimer">
             </form>
             <hr class="featurette-divider">
-            <p><a href="export.php">Mes Infos</a></p>
-            
+            <p><a href='vosinfos.csv'>Mes Infos</a></p>
+            <hr class="featurette-divider">
+
             <!-- RESERVE AUX ADMIN -->
 
             <?php if ($_SESSION["statut"] == 'admin') { ?>
@@ -97,7 +98,7 @@
                 <?php
                 $viewrecette = filter_input(INPUT_POST, 'viewrecette', FILTER_SANITIZE_STRING);
                 $viewmembre = filter_input(INPUT_POST, 'viewmembre', FILTER_SANITIZE_STRING);
-                
+
                 // Selection recette
 
                 if (!empty($viewrecette)) {
@@ -182,8 +183,8 @@
                 $newstatut = filter_input(INPUT_POST, 'newstatut', FILTER_SANITIZE_STRING);
                 $prenomMembre = filter_input(INPUT_POST, 'prenomMembre', FILTER_SANITIZE_STRING);
                 $nomMembre = filter_input(INPUT_POST, 'nomMembre', FILTER_SANITIZE_STRING);
-                
-                
+
+
 
                 if (!empty($idMembre)) {
 
@@ -251,7 +252,7 @@
                 <br><hr><br>
                 <?php
                 // Drop membre
-                
+
                 if (!empty($ban)) {
 
                     if ($resultat3 == false) {
@@ -292,7 +293,7 @@
                 $updatedifficulte = filter_input(INPUT_POST, 'updatedifficulte', FILTER_SANITIZE_STRING);
                 $updateprix = filter_input(INPUT_POST, 'updateprix', FILTER_SANITIZE_STRING);
                 $sup = filter_input(INPUT_POST, 'sup', FILTER_SANITIZE_STRING);
-                
+
                 // Modification des donnés des recettes
 
 
@@ -346,21 +347,21 @@
                     <br><hr><br>
                     <p>
                     <label for="apropos"><strong>Modifier</strong> a propos :</label>
-                    <textarea name="updateapropos" id="updateapropos" rows="3" cols="50" 
+                    <textarea name="updateapropos" id="updateapropos" rows="3" cols="40" 
                               placeholder="Modifier description"></textarea>
-                    </p>
+                    </p><br>
                     <br><hr><br>
                     <p>
                     <label for="ingredient"><strong>Modifier</strong> ingredient :</label>
-                    <textarea name="updateingredient" id="updateingredient" rows="3" cols="50" 
+                    <textarea name="updateingredient" id="updateingredient" rows="3" cols="40" 
                               placeholder="Modifier .."></textarea>
-                    </p>
+                    </p><br>
                     <br><hr><br>
                     <p>
                     <label for=preparation><strong>Modifier</strong> préparation :</label>
-                    <textarea name="updatepreparation" id="updatepreparation" rows="3" cols="50" 
+                    <textarea name="updatepreparation" id="updatepreparation" rows="3" cols="40" 
                               placeholder="Modifier .."></textarea>
-                    </p>
+                    </p><br>
                     <br><hr><br>
                     <p>
                     <label for="updatecategorie"><strong>Modifier</strong> categorie</label><br />
@@ -412,7 +413,7 @@
                 </form>
                 <?php
                 // Drop recette
-                
+
                 if (!empty($sup)) {
 
                     $resultat14 = $pdo->query("SELECT * FROM recettes WHERE idRecette = '$idRecette'");
