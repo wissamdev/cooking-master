@@ -36,16 +36,16 @@ h2.featurette-heading {
     box-shadow: 1px 1px 12px #555;
 }
 
-input, textarea, select {
-    float: right;
-}
-
 #titreCarousel, #chapoCarousel {
     color: #0F0F0F;
 }
 
 .warning {
     color: red;
+}
+
+#rightalign {
+    float: right;
 }
 
 /* CUSTOMIZE THE CAROUSEL

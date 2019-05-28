@@ -52,28 +52,24 @@
             ?>
 
             <form action="profile.php" method="post">
-                <p>
-                <label for="newpseudo">Votre <strong>nouveau</strong> pseudo :</label>
-                <input type="text" name="newpseudo" id="newpseudo" placeholder="pseudo"/>
-                </p>
-                <br><br>
-                <br>
-                <p>
-                <label for="newpass">Votre <strong>nouveau</strong> mot de passe :</label>
-                <input type="text" name="newpass" id="newpass" placeholder='mot de passe'/>
-                </p><br>
+                <div class="form-group">
+                    <label for="newpseudo">Votre <strong>nouveau</strong> pseudo</label>
+                    <input type="text" class="form-control" id="newpseudo" name="newpseudo" placeholder="pseudo">
+                </div>
+                <div class="form-group">
+                    <label for="newpass">Mot de passe</label>
+                    <input type="password" class="form-control" id="newpass" name="newpass" placeholder="Password">
+                </div><br><br>
                 <p>
                     <input class="btn btn-primary" type="submit" value="Modifier">
                 </p>
             </form><br><hr><br>
 
             <form action="killaccount.php" method="post">
-                <p><strong>Supprimer</strong> mon compte </p>
-                <input class="btn btn-danger" name="delete" type="submit" value="Supprimer">
+                <input class="btn btn-danger" id="rightalign" name="delete" type="submit" value="Supprimer Mon Compte">
             </form>
             <hr class="featurette-divider">
-            <p><a href='vosinfos.csv'>Mes Infos</a></p>
-            <hr class="featurette-divider">
+            <a href="vosinfos.csv" class="badge badge-primary" id="rightalign">Mes Infos</a><br>
 
             <!-- RESERVE AUX ADMIN -->
 
@@ -81,15 +77,14 @@
 
                 <h4 class="featurette-heading2">ADMINISTRATEUR</h4><br><br>    
                 <form action = "profile.php" method = "post">
-                    <p>
-                    <label for = "find"><strong>Trouver</strong> une recette :</label>
-                    <input type = "text" name = "viewrecette" id = "viewrecette" placeholder = "recette"/>
-                    </p><br>
-                    <p>
-                    <label for = "find"><strong>Trouver</strong> un membre :</label>
-                    <input type = "text" name = "viewmembre" id = "viewmembre" placeholder = "pseudo"/>
-                    </p>
-                    <br>
+                    <div class="form-group">
+                        <label for="viewrecette"><strong>Trouver</strong> une recette</label>
+                        <input type="text" class="form-control" id="viewrecette" name="viewrecette" placeholder="recette">
+                    </div>
+                    <div class="form-group">
+                        <label for="viewmembre"><strong>Trouver</strong> un membre</label>
+                        <input type="text" class="form-control" id="viewmembre" name="viewmembre" placeholder="membre">
+                    </div><br><br>
                     <p>
                         <input class = "btn btn-primary" type = "submit" value = "Trouvez">
                     </p>
@@ -170,8 +165,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-2 premier"></div>
-            <div class="col-4 premier">
+            <div class="col-6 premier">
 
                 <hr class="featurette-divider">
                 <h4 class="featurette-heading2">Options d'aministrateur (Membre)</h4>
@@ -215,38 +209,32 @@
                 }
                 ?>
                 <form action = "profile.php" method = "post">
-
-                    <p>
-                    <label for="idMembre"><strong class='warning'>Entrer idMembre</strong> :</label>
-                    <input type="text" name="idMembre" id="idMembre" placeholder="id"/>
-                    </p>
-                    <br><hr><br>
-                    <p>
-                    <label for="prenomMembre"><strong>Modifier</strong> prenom du membre :</label>
-                    <input type="text" name="prenomMembre" id="prenomMembre" placeholder="prenom"/>
-                    </p>
-                    <br><hr><br>
-                    <p>
-                    <label for="nomMembre"><strong>Modifier</strong> nom du membre :</label>
-                    <input type="text" name="nomMembre" id="nomMembre" placeholder="nom"/>
-                    </p>
-                    <br><hr><br>
-                    <p>
-                    <label for = "membre"> 
-                        <strong>Modifier</strong> son statut :</label>
-                    </p><br>
-                    <select name="newstatut" id="prix">
-                        <option value="admin">Admin</option>
-                        <option value="membre" selected>Membre</option>
-                        <option value="block">Block</option>
-                    </select><br><br>
+                    <div class="form-group">
+                        <label for="idMembre"><strong class='warning'>Entrer idMembre</strong></label>
+                        <input type="text" class="form-control" id="idMembre" name="idMembre" placeholder="id">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenomMembre">Votre prenom</label>
+                        <input type="text" class="form-control" id="prenomMembre" name="prenomMembre" placeholder="prenom">
+                    </div>
+                    <div class="form-group">
+                        <label for="nomMembre">Votre pseudo</label>
+                        <input type="text" class="form-control" id="nomMembre" name="nomMembre" placeholder="nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="newstatut"><strong>Modifier</strong> son statut</label>
+                        <select id="newstatut" class="form-control" name="newstatut">
+                            <option value="admin">Admin</option>
+                            <option value="membre" selected>Membre</option>
+                            <option value="block">Block</option>
+                        </select>
+                    </div><br><br>
                     <p>
                         <input class = "btn btn-danger" type = "submit" value = "Modifier">
                     </p>
-                    <br><hr><br>
+                    <br><br>
                     <p>
-                    <label for = "ban"><strong>Bannir</strong> ce membre :</label>
-                    <input class = "btn btn-danger" name = "ban" type = "submit" value = "Bannir">
+                    <button type="submit" class="btn btn-danger" id="rightalign" name= "ban">Bannir</button>
                     </p>
                 </form>
                 <br><hr><br>
@@ -275,7 +263,7 @@
 
 
             </div>
-            <div class="col-4 premier">
+            <div class="col-6 second">
 
                 <hr class="featurette-divider">
                 <h4 class="featurette-heading2">Options d'aministrateur (Recette)</h4>
@@ -335,79 +323,68 @@
 
                 <form action="profile.php" method="post">
 
-                    <p>
-                    <label for="idRecette"><strong class='warning' >Entrer idRecette</strong> :</label>
-                    <input type="text" name="idRecette" id="idRecette" placeholder="id"/>
-                    </p>
-                    <br><hr><br>
-                    <p>
-                    <label for="titreRecette"><strong>Modifier</strong> nom de la recette :</label>
-                    <input type="text" name="titreRecette" id="titreRecette" placeholder="nom"/>
-                    </p>
-                    <br><hr><br>
-                    <p>
-                    <label for="apropos"><strong>Modifier</strong> a propos :</label>
-                    <textarea name="updateapropos" id="updateapropos" rows="3" cols="40" 
-                              placeholder="Modifier description"></textarea>
-                    </p><br>
-                    <br><hr><br>
-                    <p>
-                    <label for="ingredient"><strong>Modifier</strong> ingredient :</label>
-                    <textarea name="updateingredient" id="updateingredient" rows="3" cols="40" 
-                              placeholder="Modifier .."></textarea>
-                    </p><br>
-                    <br><hr><br>
-                    <p>
-                    <label for=preparation><strong>Modifier</strong> préparation :</label>
-                    <textarea name="updatepreparation" id="updatepreparation" rows="3" cols="40" 
-                              placeholder="Modifier .."></textarea>
-                    </p><br>
-                    <br><hr><br>
-                    <p>
-                    <label for="updatecategorie"><strong>Modifier</strong> categorie</label><br />
-                    <select name="updatecategorie" id="updatecategorie">
-                        <option value="1">Viande</option>
-                        <option value="2" selected>Légume</option>
-                        <option value="3">Poisson</option>
-                        <option value="4">Fruit</option>
-                    </select>
-                    </p>
-                    <br><hr><br>
-                    <p>
-                    <label for="updatePreparationTime"><strong>Modifier</strong> temps de préparation :</label>
-                    <input type="text" name="updatePreparationTime" id="updatePreparationTime" 
-                           placeholder="exemple : 35 min"/>
-                    </p>
-                    <p>
-                    <label for="CuissonTime"><strong>Modifier</strong> temps de cuisson :</label>
-                    <input type="text" name="updateCuissonTime" id="updateCuissonTime" 
-                           placeholder="exemple : 1h 45 min"/>
-                    </p>
-                    <br><hr><br>
-                    <p>
-                    <label for="updatedifficulte"><strong>Modifier</strong> difficulté</label><br>
-                    <select name="updatedifficulte" id="prix">
-                        <option value="Facile">Facile</option>
-                        <option value="Moyen" selected>Moyen</option>
-                        <option value="Difficile">Difficile</option>
-                    </select>
-                    </p>
-                    <br><hr><br>
-                    <p>
-                    <label for="updateprix"><strong>Modifier</strong> Prix</label><br>
-                    <select name="updateprix" id="prix">
-                        <option value="pascher">Pas cher</option>
-                        <option value="abordable" selected>Abordable</option>
-                        <option value="cher">Cher</option>
-                    </select>
-                    </p><br><br>
+
+                    <div class="form-group">
+                        <label for="idRecette"><strong class='warning' >Entrer idRecette</strong></label>
+                        <input type="text" class="form-control" id="idRecette" name="idRecette" placeholder="id">
+                    </div>
+                    <div class="form-group">
+                        <label for="titreRecette"><strong>Modifier</strong> nom de la recette</label>
+                        <input type="text" class="form-control" id="titreRecette" name="titreRecette" placeholder="nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="updateapropos"><strong>Modifier</strong> a propos</label>
+                        <textarea class="form-control" id="updateapropos" name="updateapropos" placeholder="Ecrire .."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="updateingredient"><strong>Modifier</strong> ingredient</label>
+                        <textarea class="form-control" id="updateingredient" name="updateingredient" placeholder="Ecrire .."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="updatepreparation"><strong>Modifier</strong> préparation</label>
+                        <textarea class="form-control" id="updatepreparation" name="updatepreparation" placeholder="Ecrire .."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="updatePreparationTime"><strong>Modifier</strong> temps de préparation</label>
+                        <input type="text" class="form-control" id="updatePreparationTime" name="updatePreparationTime" placeholder="exemple : 1 h 05 min">
+                    </div>
+                    <div class="form-group">
+                        <label for="updateCuissonTime"><strong>Modifier</strong> temps de cuisson</label>
+                        <input type="text" class="form-control" id="updateCuissonTime" name="updateCuissonTime" placeholder="exemple : 1 h 05 min">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="updatecategorie"><strong>Modifier</strong> categorie</label>
+                            <select id="updatecategorie" class="form-control" name="updatecategorie">
+                                <option value="1" selected>Viande</option>
+                                <option value="2">Legume</option>
+                                <option value="3">Poisson</option>
+                                <option value="4">Fruit</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="updatedifficulte"><strong>Modifier</strong> difficulte</label>
+                            <select id="updatedifficulte" class="form-control" name="updatedifficulte">
+                                <option value="Facile" selected>Facile</option>
+                                <option value="Moyen">Moyen</option>
+                                <option value="Difficile">Difficile</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="updateprix"><strong>Modifier</strong> prix</label>
+                            <select id="updateprix" class="form-control" name="updateprix">
+                                <option value="Pas cher" selected>Pas cher</option>
+                                <option value="Abordable">Abordable</option>
+                                <option value="Cher">Cher</option>
+                            </select>
+                        </div>
+                    </div><br><br>
                     <p>
                         <input class="btn btn-danger" type="submit" value="Modifier">
                     </p>
                     <br><hr><br>
                     <p>
-                    <label for = "sup"><strong>Supprimer</strong> cette recette :</label>
-                    <input class = "btn btn-danger" name = "sup" type = "submit" value = "Supprimer">
+                    <input id="rightalign" class = "btn btn-danger" name = "sup" type = "submit" value = "Supprimer">
                     </p>
 
                 </form>
@@ -424,12 +401,6 @@
                             identifiant Non Trouvé
                         </div>
                         <?php
-                    } else {
-                        ?>
-                        <div class = "alert alert-success" role = "alert">
-                            Membre Banni !
-                        </div>
-                        <?php
                     }
 
                     $pdo->query("DELETE FROM `recettes` WHERE idRecette = '$idRecette'");
@@ -439,8 +410,8 @@
             <?php } ?>
 
         </div>
-        <div class="col-2 premier"></div>
     </div>
+</div>
 
 
-    <?php include("inc/footer.inc.php") ?>
+<?php include("inc/footer.inc.php") ?>

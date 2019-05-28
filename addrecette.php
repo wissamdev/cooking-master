@@ -15,80 +15,58 @@
             <hr class="featurette-divider">
 
             <form action="insert-recette.php" method="post">
-                <fieldset>
-                    <br>
-                    <p>
-                    <label for="nomRecette"><strong>Nom de la recette</strong> :</label>
-                    <input type="text" name="nomRecette" id="nomRecette" placeholder="nom"/>
-                    </p>
-                    <hr class="featurette-divider">
-                    <p>
-                    <label for="apropos"><strong>A propos</strong> :</label>
-                    <textarea name="apropos" id="apropos" rows="3" cols="50" placeholder="Description"></textarea>
-                    </p>
-                    <hr class="featurette-divider">
-                    <p>
-                    <label for="ingredient"><strong>Ingredient</strong> :</label>
-                    <textarea name="ingredient" id="ingredient" rows="3" cols="50" 
-                              placeholder="Ecrire les ingredients necessaires .."></textarea>
-                    </p>
-                    <hr class="featurette-divider">
-                    <p>
-                    <label for=preparation><strong>Préparation</strong> :</label>
-                    <textarea name="preparation" id="preparation" rows="3" cols="50" 
-                              placeholder="Ecrire les étapes à suivre .."></textarea>
-                    </p>
-                    <hr class="featurette-divider">
-                    <h6><strong>Categorie</strong> :</h6><br>
-                    <span>
-                        <input type="radio" id="legume" name="categorie" value="2" checked>
-                        <label for="legumes">Légume</label>
-                        <br>
-                        <input type="radio" id="viande" name="categorie" value="1">
-                        <label for="viande">Viande</label>
-                        <br>
-                        <input type="radio" id="poisson" name="categorie" value="3">
-                        <label for="poisson">Poisson</label>
-                        <br>
-                        <input type="radio" id="fruit" name="categorie" value="4">
-                        <label for="fruit">Fruit</label>
-                        <br>
-                    </span>
-                    <hr class="featurette-divider">
-                    <p>
-                    <label for="PreparationTime"><strong>Temps de préparation</strong> :</label>
-                    <input type="text" name="PreparationTime" id="PreparationTime" placeholder="exemple : 35 min"/>
-                    </p>
-                    <p>
-                    <label for="CuissonTime"><strong>Temps de cuisson</strong> :</label>
-                    <input type="text" name="CuissonTime" id="CuissonTime" placeholder="exemple : 1h 45 min"/>
-                    </p>
-                    <hr class="featurette-divider">
-                    <h6><strong>Difficulté</strong> :</h6><br>
-                    <span>
-                        <input type="radio" id="facile" name="difficulte" value="Facile" checked>
-                        <label for="facile">Facile</label>
-                        <br>
-                        <input type="radio" id="moyen" name="difficulte" value="Moyen">
-                        <label for="moyen">Moyen</label>
-                        <br>
-                        <input type="radio" id="difficile" name="difficulte" value="Difficile">
-                        <label for="difficile">Difficile</label>
-                        <br>
-                    </span>
-                    <hr class="featurette-divider">
-                    <p>
-                    <label for="prix">Prix</label><br />
-                    <select name="prix" id="prix">
-                        <option value="pascher">Pas cher</option>
-                        <option value="abordable" selected>Abordable</option>
-                        <option value="cher">Cher</option>
-                    </select>
-                    </p>
-                </fieldset><br><hr><br>
-                <p>
-                    <input class="btn btn-primary" type="submit" value="Envoyer">
-                </p>
+                <div class="form-group">
+                    <label for="nomRecette">Nom de la recette</label>
+                    <input type="text" class="form-control" id="nomRecette" name="nomRecette" placeholder="nom">
+                </div>
+                <div class="form-group">
+                    <label for="apropos">A propos</label>
+                    <textarea class="form-control" id="apropos" name="apropos" placeholder="Ecrire .."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="ingredient">Ingrédient</label>
+                    <textarea class="form-control" id="ingredient" name="ingredient" placeholder="Ecrire .."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="preparation">Préparation</label>
+                    <textarea class="form-control" id="preparation" name="preparation" placeholder="Ecrire .."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="PreparationTime">Temps de préparation</label>
+                    <input type="text" class="form-control" id="PreparationTime" name="PreparationTime" placeholder="exemple : 1 h 05 min">
+                </div>
+                <div class="form-group">
+                    <label for="CuissonTime">Temps de cuisson</label>
+                    <input type="text" class="form-control" id="CuissonTime" name="CuissonTime" placeholder="exemple : 1 h 05 min">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="categorie">Categorie</label>
+                        <select id="inputState" class="form-control" name="categorie">
+                            <option value="1" selected>Viande</option>
+                            <option value="2">Legume</option>
+                            <option value="3">Poisson</option>
+                            <option value="4">Fruit</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="difficulte">Difficulte</label>
+                        <select id="inputState" class="form-control" name="difficulte">
+                            <option value="Facile" selected>Facile</option>
+                            <option value="Moyen">Moyen</option>
+                            <option value="Difficile">Difficile</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Prix</label>
+                        <select id="inputState" class="form-control" name="prix">
+                            <option value="Pas cher" selected>Pas cher</option>
+                            <option value="Abordable">Abordable</option>
+                            <option value="Cher">Cher</option>
+                        </select>
+                    </div>
+                </div><br><br>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
             </form>
 
         </div>

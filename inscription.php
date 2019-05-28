@@ -18,32 +18,25 @@
 
 
             <form action="insert.php" method="post">
-                <fieldset>
-                    <br>
-                    <p>
-                    <label for="pseudo">Votre Nom :</label>
-                    <input type="text" name="nom" id="nom" placeholder="nom"/>
-                    </p>
-                    <br>
-                    <p>
-                    <label for="pseudo">Votre prenom :</label>
-                    <input type="text" name="prenom" id="prenom" placeholder="prenom"/>
-                    </p>
-                    <br>
-                    <p>
-                    <label for="pseudo">Votre pseudo :</label>
-                    <input type="text" name="pseudo" id="pseudo" placeholder="pseudo"/>
-                    </p>
-                    <br>
-                    <p>
-                    <label for="pass">Votre mot de passe :</label>
-                    <input type="password" name="pass" id="pass" required placeholder='mot de passe'/>
-                    </p>
-                </fieldset><br>
+                <div class="form-group">
+                    <label for="nom">Votre Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="nom">
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Votre prenom</label>
+                    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="prenom">
+                </div>
+                <div class="form-group">
+                    <label for="pseudo">Votre pseudo</label>
+                    <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="pseudo">
+                </div>
+                <div class="form-group">
+                    <label for="pass">Votre mot de passe</label>
+                    <input type="password" class="form-control" id="pass" name="pass" placeholder="pass">
+                </div><br><br>
                 <p>
                     <input class="btn btn-primary" type="submit" value="Envoyer">
                 </p>
-
             </form>
 
         </div>

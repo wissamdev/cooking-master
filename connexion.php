@@ -49,22 +49,15 @@ if (!empty($_POST)) {
             <h2 class="featurette-heading">Connexion</h2>
             <hr class="featurette-divider">
             <form action="connexion.php" method="post">
-                <fieldset>
-                    <p>
-                    <label for="pseudo">Login :</label>
-                    <input type="text" name="pseudo" id="pseudo" placeholder="pseudo"/>
-                    </p>
-                    <br>
-                    <p>
-                    <label for="pass">Mot de passe :</label>
-                    <input type="password" name="pass" id="pass" required placeholder='password'/>
-                    </p>
-                </fieldset>
-                <hr class="featurette-divider">
-                <p>
-                    <input class="btn btn-primary" type="submit" value="Connexion">
-                </p>
-
+                <div class="form-group">
+                    <label for="pseudo">Login</label>
+                    <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Entrer Pseudo">
+                </div>
+                <div class="form-group">
+                    <label for="pass">Mot de passe</label>
+                    <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                </div><br><br>
+                <button type="submit" class="btn btn-primary">Connexion</button>
             </form>
 
         </div>
